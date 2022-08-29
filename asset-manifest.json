@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Mustadonte/goit-react-hw-05-movies/static/css/main.7acaea2f.css",
-    "main.js": "/Mustadonte/goit-react-hw-05-movies/static/js/main.581a6919.js",
-    "index.html": "/Mustadonte/goit-react-hw-05-movies/index.html",
-    "main.7acaea2f.css.map": "/Mustadonte/goit-react-hw-05-movies/static/css/main.7acaea2f.css.map",
-    "main.581a6919.js.map": "/Mustadonte/goit-react-hw-05-movies/static/js/main.581a6919.js.map"
+    "main.css": "/static/css/main.7acaea2f.css",
+    "main.js": "/static/js/main.f2f45c4c.js",
+    "index.html": "/index.html",
+    "main.7acaea2f.css.map": "/static/css/main.7acaea2f.css.map",
+    "main.f2f45c4c.js.map": "/static/js/main.f2f45c4c.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.581a6919.js"
+    "static/js/main.f2f45c4c.js"
   ]
 }
