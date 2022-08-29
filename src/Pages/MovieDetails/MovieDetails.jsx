@@ -13,16 +13,21 @@ export const MovieDetails = () => {
   }, [movieId]);
 
   const location = useLocation();
-  console.log(location);
-  const { title, overview, poster_path } = movie;
 
+  const { title, overview, poster_path, genres = [] } = movie;
+  console.log(movie);
   return (
     <>
       <Link to={location.state?.from ?? '/movies'}>Go Back</Link>
       <div>
         <img src={`${BASE_IMG_URL}${poster_path}`} alt={title} height="400" />
         <h2>{title}</h2>
-        <p>{overview}</p>
+        <p>
+          <b>Overview:</b> {overview}
+        </p>
+        <p>
+          <b>Genres:</b> {genres.map(genre => genre.name).join(' | ')}
+        </p>
 
         <Link to="cast" state={{ from: location.state.from }}>
           Cast
