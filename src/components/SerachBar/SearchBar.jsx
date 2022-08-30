@@ -1,5 +1,7 @@
 import { useState } from 'react';
+
 import { SearchForm } from './SearchBar.styled';
+import PropTypes from 'prop-types';
 const SearchBar = ({ onSubmit }) => {
   const [state, setState] = useState({
     search: '',
@@ -36,4 +38,7 @@ const SearchBar = ({ onSubmit }) => {
   );
 };
 
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 export default SearchBar;

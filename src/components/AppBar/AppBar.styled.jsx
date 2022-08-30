@@ -27,7 +27,6 @@ export const Link = styled(NavLink)`
   &.active {
     background: #ff0000;
     background: linear-gradient(to left, #ff0000 0%, #ffff00 50%, #ff0000 100%);
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 `;

@@ -6,6 +6,7 @@ import {
 } from './RenderList.styled.jsx';
 import { BASE_IMG_URL } from 'Helpers/ApiService';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const RenderList = ({ list }) => {
   const date = new Date();
@@ -33,4 +34,7 @@ const RenderList = ({ list }) => {
   );
 };
 
+RenderList.propTypes = {
+  list: PropTypes.array,
+};
 export default RenderList;
