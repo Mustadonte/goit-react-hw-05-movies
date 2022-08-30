@@ -2,8 +2,9 @@ import { getMovieReviews } from 'Helpers/ApiService';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { BASE_IMG_URL } from 'Helpers/ApiService';
+import { ReviewsList, ReviewsListItem } from './Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   const { movieId } = useParams();
@@ -15,31 +16,37 @@ export const Reviews = () => {
   return (
     <>
       {reviews.length > 0 ? (
-        <ul>
+        <ReviewsList>
           {reviews.map(
             ({
               author_details: { avatar_path, name, rating, username },
               content,
             }) => {
               return (
-                <li key={username}>
+                <ReviewsListItem key={username}>
                   <img
                     src={`${BASE_IMG_URL}${avatar_path}`}
                     alt={name}
                     width="150"
                   />
-                  <p>Name: {name}</p>
-                  <p>Rating: {rating}</p>
-                  <p>{content}</p>
+                  <div>
+                    <h4>{name ? name : 'Unknown author'}</h4>
+                    <p>
+                      <b>Rating:</b> {rating}
+                    </p>
+                  </div>
+                  <span>{content}</span>
                   <hr />
-                </li>
+                </ReviewsListItem>
               );
             }
           )}
-        </ul>
+        </ReviewsList>
       ) : (
         <p>There is no reviews</p>
       )}
     </>
   );
 };
+
+export default Reviews;

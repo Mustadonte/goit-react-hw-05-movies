@@ -1,29 +1,41 @@
-import { getTrandingMovies } from 'Helpers/ApiService';
+import { getTrandingMovies, getTrandingMoviesMore } from 'Helpers/ApiService';
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
-export const Home = () => {
+import RenderList from 'components/RenderList/RenderList';
+import { Main } from 'components/RenderList/RenderList.styled';
+
+const Home = () => {
   const [trandingMovies, settrandingMovies] = useState([]);
+  const [page, setPage] = useState(2);
 
   useEffect(() => {
     getTrandingMovies().then(settrandingMovies);
   }, []);
-  const location = useLocation();
+
+  const fetchMoreData = () => {
+    getTrandingMoviesMore(page).then(resp => {
+      settrandingMovies([...trandingMovies, ...resp]);
+    });
+    setPage(page + 1);
+    console.log(page);
+  };
   return (
-    <main>
+    <Main>
       {trandingMovies.length > 0 && (
-        <ul>
-          {trandingMovies.map(({ id, title }) => {
-            return (
-              <li key={id}>
-                <Link to={`/movies/${id}`} state={{ from: location }}>
-                  {title}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <>
+          <InfiniteScroll
+            dataLength={trandingMovies.length}
+            next={fetchMoreData}
+            hasMore={true}
+            loader={<h4>Loading...</h4>}
+          >
+            <RenderList list={trandingMovies} />
+          </InfiniteScroll>
+        </>
       )}
-    </main>
+    </Main>
   );
 };
+
+export default Home;

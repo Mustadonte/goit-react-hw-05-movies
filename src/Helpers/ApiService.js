@@ -59,3 +59,18 @@ export const getMovieByKeyword = async q => {
     console.log(error);
   }
 };
+
+export const getTrandingMoviesMore = async page => {
+  try {
+    const response = await axios('/trending/movie/day', {
+      params: {
+        api_key: API_KEY,
+        page,
+      },
+    });
+
+    return response.data.results;
+  } catch (error) {
+    console.log(error);
+  }
+};

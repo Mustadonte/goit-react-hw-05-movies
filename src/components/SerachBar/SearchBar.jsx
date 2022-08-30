@@ -1,5 +1,6 @@
 import { useState } from 'react';
-export const SearchBar = ({ onSubmit }) => {
+import { SearchForm } from './SearchBar.styled';
+const SearchBar = ({ onSubmit }) => {
   const [state, setState] = useState({
     search: '',
   });
@@ -21,7 +22,7 @@ export const SearchBar = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <SearchForm onSubmit={handleSubmit}>
       <input
         name="search"
         value={state.search}
@@ -31,6 +32,8 @@ export const SearchBar = ({ onSubmit }) => {
         required
       />
       <button type="submit">Search</button>
-    </form>
+    </SearchForm>
   );
 };
+
+export default SearchBar;
