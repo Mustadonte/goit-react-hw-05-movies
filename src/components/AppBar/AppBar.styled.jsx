@@ -25,8 +25,10 @@ export const Link = styled(NavLink)`
   color: white;
 
   &.active {
-    background: #ff0000;
+    background: transparent;
+
     background: linear-gradient(to left, #ff0000 0%, #ffff00 50%, #ff0000 100%);
     -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 `;
